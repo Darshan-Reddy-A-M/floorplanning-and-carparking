@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "source": {
+    "dataset": "ResPlan",
+    "derived_prior_file": "data/priors/resplan_priors.json",
+    "purpose": "Convert observed ResPlan patterns into architectural preferences for floorplan generation."
+  },
+
+  "room_program": {
+    "living": {
+      "expected_count": {
+        "preferred": 1,
+        "minimum": 1,
+        "maximum": 1
+      },
+      "presence_rate": 0.99994
+    },
+
+    "kitchen": {
+      "expected_count": {
+        "preferred": 1,
+        "minimum": 1,
+        "maximum": 2
+      },
+      "presence_rate": 0.99265
+    },
+
+    "bedroom": {
+      "expected_count": {
+        "preferred": 2,
+        "minimum": 1,
+        "maximum": 4
+      },
+      "dataset_median": 2,
+      "dataset_mean": 2.3978,
+      "presence_rate": 0.99982
+    },
+
+    "bathroom": {
+      "expected_count": {
+        "preferred": 2,
+        "minimum": 1,
+        "maximum": 4
+      },
+      "dataset_median": 2,
+      "dataset_mean": 2.3772,
+      "presence_rate": 1.0
+    },
+
+    "balcony": {
+      "expected_count": {
+        "preferred": 1,
+        "minimum": 0,
+        "maximum": 2
+      },
+      "presence_rate": 0.76859
+    },
+
+    "stair": {
+      "expected_count": {
+        "preferred": 0,
+        "minimum": 0,
+        "maximum": 1
+      },
+      "presence_rate": 0.04029
+    },
+
+    "storage": {
+      "expected_count": {
+        "preferred": 0,
+        "minimum": 0,
+        "maximum": 1
+      },
+      "presence_rate": 0.10476
+    }
+  },
+
+  "connectivity": {
+    "strong_relationships": [
+      {
+        "rooms": ["bedroom", "living"],
+        "relation": "via_door",
+        "observed_count": 40367
+      },
+      {
+        "rooms": ["bathroom", "bedroom"],
+        "relation": "via_door",
+        "observed_count": 23417
+      },
+      {
+        "rooms": ["bathroom", "living"],
+        "relation": "via_door",
+        "observed_count": 16916
+      },
+      {
+        "rooms": ["front_door", "living"],
+        "relation": "direct",
+        "observed_count": 16503
+      },
+      {
+        "rooms": ["kitchen", "living"],
+        "relation": "via_door",
+        "observed_count": 13265
+      },
+      {
+        "rooms": ["balcony", "bedroom"],
+        "relation": "via_door",
+        "observed_count": 14750
+      },
+      {
+        "rooms": ["balcony", "living"],
+        "relation": "via_door",
+        "observed_count": 7567
+      }
+    ],
+
+    "common_adjacencies": [
+      {
+        "rooms": ["bathroom", "bedroom"],
+        "observed_count": 18004
+      },
+      {
+        "rooms": ["bathroom", "living"],
+        "observed_count": 12750
+      },
+      {
+        "rooms": ["bedroom", "bedroom"],
+        "observed_count": 10055
+      },
+      {
+        "rooms": ["bedroom", "kitchen"],
+        "observed_count": 7592
+      },
+      {
+        "rooms": ["bathroom", "kitchen"],
+        "observed_count": 5560
+      },
+      {
+        "rooms": ["kitchen", "living"],
+        "observed_count": 3614
+      }
+    ],
+
+    "front_door_relationships": [
+      {
+        "room": "living",
+        "relation": "direct",
+        "observed_count": 16503
+      },
+      {
+        "room": "kitchen",
+        "relation": "direct",
+        "observed_count": 83
+      },
+      {
+        "room": "stair",
+        "relation": "direct",
+        "observed_count": 82
+      }
+    ]
+  },
+
+  "architectural_presence": {
+    "door": {
+      "presence_rate": 1.0
+    },
+
+    "window": {
+      "presence_rate": 0.997
+    },
+
+    "front_door": {
+      "presence_rate": 0.99971
+    },
+
+    "wall": {
+      "presence_rate": 1.0
+    },
+
+    "balcony": {
+      "presence_rate": 0.76859
+    },
+
+    "storage": {
+      "presence_rate": 0.10476
+    },
+
+    "stair": {
+      "presence_rate": 0.04029
+    },
+
+    "parking": {
+      "presence_rate": 0.01982
+    },
+
+    "garden": {
+      "presence_rate": 0.03194
+    },
+
+    "pool": {
+      "presence_rate": 0.00006
+    }
+  },
+
+  "edge_types": {
+    "via_door": {
+      "observed_count": 118719,
+      "priority": "high"
+    },
+
+    "adjacency": {
+      "observed_count": 77018,
+      "priority": "high"
+    },
+
+    "direct": {
+      "observed_count": 16730,
+      "priority": "medium"
+    },
+
+    "via_window": {
+      "observed_count": 6554,
+      "priority": "medium"
+    }
+  },
+
+  "design_preferences": {
+    "entrance": {
+      "preferred_first_connection": "living",
+      "avoid_direct_connection_to": [
+        "bathroom"
+      ]
+    },
+
+    "living": {
+      "preferred_connections": [
+        "kitchen",
+        "bedroom",
+        "bathroom",
+        "balcony"
+      ]
+    },
+
+    "kitchen": {
+      "preferred_connections": [
+        "living"
+      ]
+    },
+
+    "bedroom": {
+      "preferred_connections": [
+        "living",
+        "bathroom",
+        "balcony"
+      ]
+    },
+
+    "bathroom": {
+      "preferred_connections": [
+        "bedroom",
+        "living"
+      ]
+    },
+
+    "balcony": {
+      "preferred_connections": [
+        "bedroom",
+        "living"
+      ]
+    },
+
+    "stair": {
+      "preferred_connections": [
+        "living"
+      ]
+    },
+
+    "storage": {
+      "preferred_connections": [
+        "living",
+        "bedroom",
+        "kitchen"
+      ]
+    }
+  },
+
+  "hard_constraints": {
+    "front_door_required": true,
+    "living_room_required": true,
+    "kitchen_required": true,
+    "bedroom_required": true,
+    "bathroom_required": true
+  },
+
+  "soft_constraints": {
+    "prefer_kitchen_living_connection": true,
+    "prefer_bedroom_living_connection": true,
+    "prefer_bathroom_bedroom_connection": true,
+    "prefer_balcony_bedroom_connection": true,
+    "prefer_balcony_living_connection": true,
+    "prefer_front_door_living_connection": true
+  },
+
+  "important_notes": [
+    "These rules are derived from observed ResPlan graph relationships.",
+    "Presence rates are statistical priors, not mandatory requirements for every user program.",
+    "Bedroom and bathroom preferred counts represent dataset medians, not universal architectural requirements.",
+    "Parking, garden, pool, stair and storage should remain conditional on the user's site and program.",
+    "Raw geometry areas are intentionally not converted to square metres here.",
+    "This file is a knowledge layer and should not directly replace the existing OR-Tools constraints."
+  ]
+}
