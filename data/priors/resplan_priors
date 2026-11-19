@@ -1,0 +1,575 @@
+{
+  "schema_version": 2,
+  "tool": "resplan_prior_extractor_v2",
+  "source": {
+    "dataset": "ResPlan",
+    "pickle_file": "external local ResPlan.pkl (not bundled)",
+    "total_plans_in_pickle": 17000,
+    "plans_processed": 17000,
+    "full_dataset_processed": true
+  },
+  "official_splits": {
+    "train": {
+      "count": 13053,
+      "first_ids": [
+        6,
+        7,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "val": {
+      "count": 1632,
+      "first_ids": [
+        0,
+        4,
+        5,
+        12,
+        24,
+        28,
+        33,
+        40,
+        51,
+        73
+      ]
+    },
+    "test": {
+      "count": 1632,
+      "first_ids": [
+        1,
+        8,
+        59,
+        69,
+        71,
+        72,
+        80,
+        82,
+        102,
+        112
+      ]
+    },
+    "augmented": {
+      "count": 683,
+      "first_ids": [
+        100708,
+        101533,
+        102805,
+        106182,
+        106687,
+        107540,
+        108491,
+        109717,
+        109738,
+        110048
+      ]
+    }
+  },
+  "plan_area": {
+    "area_field": {
+      "count": 17000,
+      "min": 0.092903,
+      "p25": 87.143014,
+      "median": 109.62554,
+      "mean": 120.6853141427722,
+      "p75": 140.77127074999999,
+      "p90": 180.23182,
+      "max": 712.937622
+    },
+    "net_area_field": {
+      "count": 17000,
+      "min": 0.0,
+      "p25": 0.0,
+      "median": 67.94548311108888,
+      "mean": 4707661.722358859,
+      "p75": 104.8079492391422,
+      "p90": 163.13152157945385,
+      "max": 79140857694.65234
+    }
+  },
+  "graph": {
+    "nodes_per_plan": {
+      "count": 17000,
+      "min": 4.0,
+      "p25": 8.0,
+      "median": 9.0,
+      "mean": 9.200764705882353,
+      "p75": 10.0,
+      "p90": 12.0,
+      "max": 23.0
+    },
+    "edges_per_plan": {
+      "count": 17000,
+      "min": 4.0,
+      "p25": 10.0,
+      "median": 12.0,
+      "mean": 12.883588235294118,
+      "p75": 15.0,
+      "p90": 18.0,
+      "max": 38.0
+    },
+    "observed_node_labels": {
+      "balcony": 21751,
+      "bathroom": 40413,
+      "bedroom": 40756,
+      "front_door": 16995,
+      "kitchen": 16945,
+      "living": 16999,
+      "stair": 757,
+      "storage": 1797
+    }
+  },
+  "rooms": {
+    "balcony": {
+      "node_occurrences": 21751,
+      "plans_with_room": 13066,
+      "presence_rate": 0.7685882352941177,
+      "count_per_plan": {
+        "count": 13066,
+        "min": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "mean": 1.6647022807286087,
+        "p75": 2.0,
+        "p90": 3.0,
+        "max": 9.0
+      },
+      "geometry_area_units": {
+        "count": 21751,
+        "min": 1.0658141036401503e-14,
+        "p25": 1103.465926604769,
+        "median": 1644.7756951471208,
+        "mean": 1977.8331773215414,
+        "p75": 2377.4745501871917,
+        "p90": 3392.8846977490653,
+        "max": 45827.73164327749
+      }
+    },
+    "bathroom": {
+      "node_occurrences": 40413,
+      "plans_with_room": 17000,
+      "presence_rate": 1.0,
+      "count_per_plan": {
+        "count": 17000,
+        "min": 1.0,
+        "p25": 2.0,
+        "median": 2.0,
+        "mean": 2.377235294117647,
+        "p75": 3.0,
+        "p90": 3.0,
+        "max": 7.0
+      },
+      "geometry_area_units": {
+        "count": 40413,
+        "min": 0.10002715035057436,
+        "p25": 1134.1575437542626,
+        "median": 1516.4919195022653,
+        "mean": 1590.7280743127444,
+        "p75": 1967.2004791438346,
+        "p90": 2419.7545586032898,
+        "max": 15202.863450504137
+      }
+    },
+    "bedroom": {
+      "node_occurrences": 40756,
+      "plans_with_room": 16997,
+      "presence_rate": 0.9998235294117647,
+      "count_per_plan": {
+        "count": 16997,
+        "min": 1.0,
+        "p25": 2.0,
+        "median": 2.0,
+        "mean": 2.397834912043302,
+        "p75": 3.0,
+        "p90": 3.0,
+        "max": 7.0
+      },
+      "geometry_area_units": {
+        "count": 40756,
+        "min": 0.15938242062670907,
+        "p25": 4468.418111381473,
+        "median": 5904.271129616564,
+        "mean": 6080.462276110345,
+        "p75": 7493.182747333121,
+        "p90": 9117.37484970929,
+        "max": 27707.20127553184
+      }
+    },
+    "front_door": {
+      "node_occurrences": 16995,
+      "plans_with_room": 16995,
+      "presence_rate": 0.9997058823529412,
+      "count_per_plan": {
+        "count": 16995,
+        "min": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "mean": 1.0,
+        "p75": 1.0,
+        "p90": 1.0,
+        "max": 1.0
+      },
+      "geometry_area_units": {
+        "count": 16995,
+        "min": 3.9632942723808675e-13,
+        "p25": 70.05604419121252,
+        "median": 91.482906122449,
+        "mean": 97.27749766163996,
+        "p75": 118.1436244202936,
+        "p90": 147.29767922142904,
+        "max": 314.93637293857427
+      }
+    },
+    "kitchen": {
+      "node_occurrences": 16945,
+      "plans_with_room": 16875,
+      "presence_rate": 0.9926470588235294,
+      "count_per_plan": {
+        "count": 16875,
+        "min": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "mean": 1.0041481481481482,
+        "p75": 1.0,
+        "p90": 1.0,
+        "max": 3.0
+      },
+      "geometry_area_units": {
+        "count": 16945,
+        "min": 0.009766627407827019,
+        "p25": 2607.7944685914294,
+        "median": 3436.163083286814,
+        "mean": 3664.4791939051443,
+        "p75": 4504.513207204951,
+        "p90": 5599.289258405272,
+        "max": 15837.010219578147
+      }
+    },
+    "living": {
+      "node_occurrences": 16999,
+      "plans_with_room": 16999,
+      "presence_rate": 0.9999411764705882,
+      "count_per_plan": {
+        "count": 16999,
+        "min": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "mean": 1.0,
+        "p75": 1.0,
+        "p90": 1.0,
+        "max": 1.0
+      },
+      "geometry_area_units": {
+        "count": 16999,
+        "min": 34.70676433001862,
+        "p25": 10934.661702746267,
+        "median": 13649.707190132642,
+        "mean": 14009.180166399334,
+        "p75": 16665.248118133935,
+        "p90": 19817.520897591097,
+        "max": 32427.457584206077
+      }
+    },
+    "stair": {
+      "node_occurrences": 757,
+      "plans_with_room": 685,
+      "presence_rate": 0.04029411764705882,
+      "count_per_plan": {
+        "count": 685,
+        "min": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "mean": 1.1051094890510949,
+        "p75": 1.0,
+        "p90": 1.0,
+        "max": 3.0
+      },
+      "geometry_area_units": {
+        "count": 757,
+        "min": 85.4559034760126,
+        "p25": 661.1222529880789,
+        "median": 1186.2039490025845,
+        "mean": 1872.395796671316,
+        "p75": 2220.2066975258776,
+        "p90": 3613.8165678212836,
+        "max": 31528.51098726623
+      }
+    },
+    "storage": {
+      "node_occurrences": 1797,
+      "plans_with_room": 1781,
+      "presence_rate": 0.10476470588235294,
+      "count_per_plan": {
+        "count": 1781,
+        "min": 1.0,
+        "p25": 1.0,
+        "median": 1.0,
+        "mean": 1.0089837170129141,
+        "p75": 1.0,
+        "p90": 1.0,
+        "max": 3.0
+      },
+      "geometry_area_units": {
+        "count": 1797,
+        "min": 173.66932680515382,
+        "p25": 563.379052567496,
+        "median": 873.435001925125,
+        "mean": 1202.3433214935735,
+        "p75": 1488.5857870733314,
+        "p90": 2673.440206730808,
+        "max": 5716.233884302577
+      }
+    }
+  },
+  "architectural_elements": {
+    "balcony": {
+      "plans_with_element": 13066,
+      "presence_rate": 0.7685882352941177
+    },
+    "bathroom": {
+      "plans_with_element": 17000,
+      "presence_rate": 1.0
+    },
+    "bedroom": {
+      "plans_with_element": 16997,
+      "presence_rate": 0.9998235294117647
+    },
+    "door": {
+      "plans_with_element": 17000,
+      "presence_rate": 1.0
+    },
+    "front_door": {
+      "plans_with_element": 16995,
+      "presence_rate": 0.9997058823529412
+    },
+    "garden": {
+      "plans_with_element": 543,
+      "presence_rate": 0.03194117647058824
+    },
+    "kitchen": {
+      "plans_with_element": 16875,
+      "presence_rate": 0.9926470588235294
+    },
+    "living": {
+      "plans_with_element": 16999,
+      "presence_rate": 0.9999411764705882
+    },
+    "parking": {
+      "plans_with_element": 337,
+      "presence_rate": 0.019823529411764705
+    },
+    "pool": {
+      "plans_with_element": 1,
+      "presence_rate": 5.882352941176471e-05
+    },
+    "stair": {
+      "plans_with_element": 685,
+      "presence_rate": 0.04029411764705882
+    },
+    "storage": {
+      "plans_with_element": 1781,
+      "presence_rate": 0.10476470588235294
+    },
+    "wall": {
+      "plans_with_element": 17000,
+      "presence_rate": 1.0
+    },
+    "window": {
+      "plans_with_element": 16949,
+      "presence_rate": 0.997
+    }
+  },
+  "connectivity": {
+    "edge_type_counts": {
+      "adjacency": 77018,
+      "direct": 16730,
+      "via_door": 118719,
+      "via_window": 6554
+    },
+    "room_pair_counts": {
+      "bathroom|bedroom": 41421,
+      "bedroom|living": 40457,
+      "bathroom|living": 29666,
+      "balcony|bedroom": 20474,
+      "front_door|living": 16983,
+      "kitchen|living": 16879,
+      "bedroom|bedroom": 10113,
+      "balcony|living": 8327,
+      "bedroom|kitchen": 8039,
+      "balcony|bathroom": 6878,
+      "bathroom|bathroom": 6861,
+      "bathroom|kitchen": 5748,
+      "living|storage": 1722,
+      "bedroom|storage": 980,
+      "balcony|balcony": 815,
+      "kitchen|storage": 648,
+      "bathroom|storage": 600,
+      "living|stair": 593,
+      "bathroom|stair": 385,
+      "bedroom|stair": 304,
+      "bedroom|front_door": 249,
+      "balcony|storage": 213,
+      "front_door|kitchen": 105,
+      "front_door|stair": 101,
+      "balcony|stair": 83,
+      "kitchen|stair": 81,
+      "bathroom|front_door": 74,
+      "kitchen|kitchen": 71,
+      "balcony|kitchen": 70,
+      "balcony|front_door": 26,
+      "front_door|storage": 25,
+      "stair|storage": 13,
+      "stair|stair": 12,
+      "storage|storage": 5
+    },
+    "room_pair_relation_counts": {
+      "bedroom|living|via_door": 40367,
+      "bathroom|bedroom|via_door": 23417,
+      "bathroom|bedroom|adjacency": 18004,
+      "bathroom|living|via_door": 16916,
+      "front_door|living|direct": 16503,
+      "balcony|bedroom|via_door": 14750,
+      "kitchen|living|via_door": 13265,
+      "bathroom|living|adjacency": 12750,
+      "bedroom|bedroom|adjacency": 10055,
+      "bedroom|kitchen|adjacency": 7592,
+      "balcony|living|via_door": 7567,
+      "bathroom|bathroom|adjacency": 6830,
+      "bathroom|kitchen|adjacency": 5560,
+      "balcony|bedroom|adjacency": 4770,
+      "balcony|bathroom|via_window": 4645,
+      "kitchen|living|adjacency": 3614,
+      "balcony|bathroom|adjacency": 2213,
+      "balcony|bedroom|via_window": 954,
+      "living|storage|via_door": 930,
+      "bedroom|storage|adjacency": 909,
+      "balcony|balcony|adjacency": 813,
+      "living|storage|adjacency": 792,
+      "kitchen|storage|adjacency": 592,
+      "bathroom|storage|adjacency": 539,
+      "living|stair|adjacency": 489,
+      "front_door|living|via_window": 448,
+      "bedroom|kitchen|via_door": 447,
+      "balcony|living|via_window": 423,
+      "balcony|living|adjacency": 337,
+      "bedroom|stair|adjacency": 243,
+      "bathroom|stair|via_door": 215,
+      "bedroom|front_door|adjacency": 203,
+      "bathroom|kitchen|via_door": 188,
+      "bathroom|stair|adjacency": 170,
+      "balcony|storage|adjacency": 146,
+      "living|stair|via_door": 104,
+      "bedroom|living|adjacency": 90,
+      "front_door|kitchen|direct": 83,
+      "front_door|stair|direct": 82,
+      "balcony|stair|adjacency": 76,
+      "bedroom|storage|via_door": 71,
+      "bathroom|front_door|adjacency": 62,
+      "bathroom|storage|via_door": 61,
+      "bedroom|stair|via_door": 61,
+      "balcony|storage|via_window": 60,
+      "bedroom|bedroom|via_door": 58,
+      "kitchen|storage|via_door": 56,
+      "kitchen|kitchen|via_door": 53,
+      "kitchen|stair|adjacency": 49,
+      "balcony|kitchen|via_door": 41,
+      "kitchen|stair|via_door": 32,
+      "bathroom|bathroom|via_door": 31,
+      "front_door|living|via_door": 28,
+      "bedroom|front_door|direct": 27,
+      "balcony|kitchen|adjacency": 24,
+      "balcony|front_door|direct": 22,
+      "front_door|storage|adjacency": 21,
+      "balcony|bathroom|via_door": 20,
+      "front_door|kitchen|adjacency": 20,
+      "kitchen|kitchen|adjacency": 18,
+      "front_door|stair|via_door": 15,
+      "bedroom|front_door|via_window": 12,
+      "stair|stair|adjacency": 12,
+      "stair|storage|adjacency": 12,
+      "bathroom|front_door|direct": 9,
+      "balcony|storage|via_door": 7,
+      "bedroom|front_door|via_door": 7,
+      "balcony|stair|via_door": 6,
+      "balcony|kitchen|via_window": 5,
+      "front_door|living|adjacency": 4,
+      "front_door|stair|adjacency": 4,
+      "front_door|storage|direct": 4,
+      "storage|storage|adjacency": 4,
+      "balcony|balcony|via_door": 2,
+      "balcony|front_door|via_window": 2,
+      "bathroom|front_door|via_window": 2,
+      "front_door|kitchen|via_window": 2,
+      "balcony|front_door|adjacency": 1,
+      "balcony|front_door|via_door": 1,
+      "balcony|stair|via_window": 1,
+      "bathroom|front_door|via_door": 1,
+      "stair|storage|via_door": 1,
+      "storage|storage|via_door": 1
+    }
+  },
+  "geometry": {
+    "node_geometry_types": {
+      "MultiPolygon": 261,
+      "Polygon": 156152
+    }
+  },
+  "front_door": {
+    "geometry_area_units": {
+      "count": 16995,
+      "min": 3.9632942723808675e-13,
+      "p25": 70.05604419121252,
+      "median": 91.482906122449,
+      "mean": 97.27749766163996,
+      "p75": 118.1436244202936,
+      "p90": 147.29767922142904,
+      "max": 314.93637293857427
+    }
+  },
+  "wall_depth": {
+    "count": 17000,
+    "min": 2.2196531791907512,
+    "p25": 3.6889487282122198,
+    "median": 4.13663091636402,
+    "mean": 4.187387591288849,
+    "p75": 4.63981588032221,
+    "p90": 5.066122192555364,
+    "max": 7.175334786670819
+  },
+  "area_change_sqft": {
+    "count": 683,
+    "min": -4.978446216485736,
+    "p25": -2.6079281946992383,
+    "median": -0.4244957779381453,
+    "mean": -0.08450365989017321,
+    "p75": 2.521241040600879,
+    "p90": 4.0355144168626715,
+    "max": 4.999766211030286
+  },
+  "functional_room_types": [
+    "bathroom",
+    "bedroom",
+    "kitchen",
+    "living"
+  ],
+  "optional_architectural_types": [
+    "balcony",
+    "stair",
+    "storage"
+  ],
+  "notes": [
+    "Raw Shapely geometry areas are retained as geometry_area_units.",
+    "geometry_area_units are not assumed to represent square metres.",
+    "The ResPlan plan-level area field and graph-node geometry area are kept as separate quantities.",
+    "No room-area percentage is calculated from these two quantities.",
+    "Room statistics are derived primarily from NetworkX graph node type labels.",
+    "Architectural presence is based on non-empty geometry.",
+    "Connectivity statistics are derived from graph edge types and connected room labels.",
+    "The raw ResPlan.pkl file remains outside the project repository."
+  ]
+}
