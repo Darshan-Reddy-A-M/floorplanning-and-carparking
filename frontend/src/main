@@ -1,0 +1,180 @@
+import React, { useEffect, useMemo, useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import {
+  House, Plus, FolderOpen, Download, Save, Sparkles, MousePointer2, Move,
+  Pencil, Trash2, ZoomIn, ZoomOut, Maximize, LayoutGrid, CarFront, BedDouble,
+  Bath, ChefHat, Sofa, Utensils, Check, ChevronDown, X, FileJson, FileImage,
+  CircleHelp, PanelRight, RotateCcw, Menu
+} from 'lucide-react';
+import './styles.css';
+
+const DEFAULT = {
+  name: 'Planify Duplex', width: 40, depth: 60, unit: 'ft',
+  setbacks: { front: 5, back: 5, left: 3, right: 3 },
+  bedrooms: 3, bathrooms: 2, living: 1, kitchen: 1, parking: 1, dining: 1,
+  buildingType: 'multi'
+};
+
+const ROOM_COLORS = ['#f7e6c9','#dceafb','#e5def9','#d8f0e8','#f5dce8','#d8edf5','#f5e8d4','#e4edda'];
+
+function createLayout(settings, variant=0) {
+  const w = Number(settings.width), d = Number(settings.depth);
+  const sx = Number(settings.setbacks.left)+Number(settings.setbacks.right);
+  const sy = Number(settings.setbacks.front)+Number(settings.setbacks.back);
+  const bw = Math.max(2, w-sx), bd = Math.max(2, d-sy);
+  const rooms = [];
+  const add = (name, width, depth, color, x, y, icon) => rooms.push({id:`${name}-${rooms.length}`,name,width,depth,color,x,y,icon});
+  // A deliberately simple, deterministic student-project layout template.
+  const offsetX = Number(settings.setbacks.left), offsetY = Number(settings.setbacks.back);
+  const gap = 0.12;
+  const leftW = bw * (variant===1 ? .56 : .52);
+  const rightW = bw-leftW-gap;
+  const topD = bd*.30, middleD=bd*.29, bottomD=bd-topD-middleD-gap*2;
+  let x=offsetX, y=offsetY;
+  if (settings.bedrooms>0) {
+    const count=Math.min(3,Number(settings.bedrooms));
+    const eachW=rightW/count;
+    for(let i=0;i<count;i++) add(`Bedroom ${i+1}`,eachW,topD,ROOM_COLORS[(i+2)%ROOM_COLORS.length],x+leftW+gap+i*eachW,y,'bed');
+  }
+  add('Kitchen',leftW*.52,middleD,ROOM_COLORS[1],x,y+topD+gap,'kitchen');
+  if (settings.bathrooms>0) add('Bath',rightW*.44,middleD*.72,ROOM_COLORS[5],x+leftW+gap,y+topD+gap,'bath');
+  add('Dining',leftW*.48,middleD,ROOM_COLORS[3],x+leftW*.52,y+topD+gap,'dining');
+  add('Living Room',leftW,bottomD,ROOM_COLORS[0],x,y+topD+middleD+gap*2,'living');
+  if (settings.bathrooms>1) add('Bath 2',rightW*.40,bottomD*.42,ROOM_COLORS[5],x+leftW+gap,y+topD+middleD+gap*2,'bath');
+  if (settings.parking>0) add('Parking',Math.min(3.1,bw*.32),Math.min(5.2,bd*.35),'#dce2e8',w-Number(settings.setbacks.right)-Math.min(3.1,bw*.32),Number(settings.setbacks.front),'car');
+  return {id:`layout-${variant}`,name:['Balanced layout','Open living layout','Compact alternative'][variant],width:w,depth:d,buildable:{x:offsetX,y:offsetY,width:bw,depth:bd},rooms,variant};
+}
+
+function downloadBlob(blob, name) {
+  const url=URL.createObjectURL(blob), a=document.createElement('a');
+  a.href=url; a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(url),500);
+}
+function slug(s){return (s||'floor-plan').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'floor-plan';}
+
+function App() {
+  const [settings,setSettings]=useState(DEFAULT);
+  const [layoutIndex,setLayoutIndex]=useState(0);
+  const [view,setView]=useState('2d');
+  const [tool,setTool]=useState('select');
+  const [zoom,setZoom]=useState(1);
+  const [saved,setSaved]=useState(()=>JSON.parse(localStorage.getItem('floorplan-lite-projects')||'[]'));
+  const [page,setPage]=useState('new');
+  const [showSaved,setShowSaved]=useState(false);
+  const [assistantText,setAssistantText]=useState('');
+  const [message,setMessage]=useState('Your concept is ready to explore.');
+  const [selectedRoom,setSelectedRoom]=useState(null);
+  const layouts=useMemo(()=>[0,1,2].map(v=>createLayout(settings,v)),[settings]);
+  const active=layouts[layoutIndex];
+
+  useEffect(()=>{localStorage.setItem('floorplan-lite-projects',JSON.stringify(saved));},[saved]);
+  const update=(key,value)=>setSettings(s=>({...s,[key]:value}));
+  const updateSetback=(key,value)=>setSettings(s=>({...s,setbacks:{...s.setbacks,[key]:Number(value)}}));
+  function saveProject(){
+    const project={...settings,id:crypto.randomUUID?.()||String(Date.now()),updatedAt:new Date().toISOString()};
+    setSaved(prev=>[project,...prev.filter(p=>p.name!==project.name)]);
+    setMessage(`Saved "${settings.name}" in this browser.`);
+  }
+  function openProject(project){setSettings(project);setLayoutIndex(0);setPage('new');setShowSaved(false);setMessage(`Opened ${project.name}.`);}
+  function exportJSON(){downloadBlob(new Blob([JSON.stringify({settings,layouts,activeLayout:active},null,2)],{type:'application/json'}),`${slug(settings.name)}.json`);}
+  function exportSVG(){
+    const scale=48, pad=40, width=settings.width*scale+pad*2, height=settings.depth*scale+pad*2;
+    const rects=active.rooms.map(r=>`<rect x="${pad+r.x*scale}" y="${pad+(settings.depth-r.y-r.depth)*scale}" width="${r.width*scale}" height="${r.depth*scale}" fill="${r.color}" stroke="#303b4c" stroke-width="2"/><text x="${pad+(r.x+r.width/2)*scale}" y="${pad+(settings.depth-r.y-r.depth/2)*scale}" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="11" fill="#253047">${r.name}</text>`).join('');
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><rect width="100%" height="100%" fill="white"/><text x="${pad}" y="24" font-family="Arial" font-size="16" font-weight="bold">${settings.name} — ${active.name}</text><rect x="${pad+active.buildable.x*scale}" y="${pad+(settings.depth-active.buildable.y-active.buildable.depth)*scale}" width="${active.buildable.width*scale}" height="${active.buildable.depth*scale}" fill="none" stroke="#9aa7b8" stroke-dasharray="6 4"/>${rects}<text x="${pad}" y="${height-10}" font-family="Arial" font-size="10" fill="#64748b">Student concept only — verify all dimensions and regulations.</text></svg>`;
+    downloadBlob(new Blob([svg],{type:'image/svg+xml'}),`${slug(settings.name)}.svg`);
+  }
+  function applyAssistant(){
+    const text=assistantText.toLowerCase();
+    const bedroom=text.match(/(\d+)\s*bed(room)?s?/), bath=text.match(/(\d+)\s*bath(room)?s?/);
+    const width=text.match(/(\d+(?:\.\d+)?)\s*(?:m|meter|metre)s?\s*(?:x|by)\s*(\d+(?:\.\d+)?)\s*(?:m|meter|metre)s?/);
+    setSettings(s=>({...s,bedrooms:bedroom?Math.max(0,Math.min(6,+bedroom[1])):s.bedrooms,bathrooms:bath?Math.max(0,Math.min(4,+bath[1])):s.bathrooms,width:width?+width[1]:s.width,depth:width?+width[2]:s.depth,dining:text.includes('no dining')?0:text.includes('add dining')?1:s.dining}));
+    setMessage('Requirements updated. Review the new concept and its dimensions.');
+    setAssistantText('');
+  }
+  function removeSaved(id){setSaved(p=>p.filter(x=>x.id!==id));}
+  const metrics={area:(settings.width*settings.depth).toFixed(1),buildable:(Math.max(0,settings.width-settings.setbacks.left-settings.setbacks.right)*Math.max(0,settings.depth-settings.setbacks.front-settings.setbacks.back)).toFixed(1)};
+  return <div className="app">
+    <header className="topbar">
+      <button className="brand" onClick={()=>setPage('new')}><span className="brand-icon"><House size={20}/></span><span>Planify <b>AI</b><small>RESIDENTIAL FLOOR PLANNER</small></span></button>
+      <nav><button className={page==='home'?'nav-active':''} onClick={()=>setPage('home')}>Home</button><button className={page==='new'?'nav-active':''} onClick={()=>setPage('new')}>New Project</button><button className={page==='saved'?'nav-active':''} onClick={()=>setPage('saved')}>Saved Projects <span className="nav-count">{saved.length}</span></button></nav>
+      <div className="header-actions"><span className="status-pill"><i/> Local workspace</span><button className="primary small" onClick={saveProject}><Save size={15}/> Save project</button></div>
+    </header>
+    {page==='home' ? <HomePage onNew={()=>setPage('new')} onSaved={()=>setPage('saved')} savedCount={saved.length}/> :
+    page==='saved' ? <SavedPage projects={saved} onOpen={openProject} onDelete={removeSaved} onNew={()=>setPage('new')}/> :
+    <main className="workspace">
+      <aside className="settings-panel">
+        <div className="panel-heading"><div><span className="eyebrow">PROJECT WORKSPACE</span><h2>Project settings</h2></div><button className="icon-button" title="Help"><CircleHelp size={17}/></button></div>
+        <label className="field-label">Project name</label><input className="text-input" value={settings.name} onChange={e=>update('name',e.target.value)}/>
+        <div className="section-heading"><span className="section-number">01</span><div><b>Plot dimensions</b><small>Set your site boundary</small></div></div>
+        <div className="two-cols"><Field label="Width" value={settings.width} suffix={settings.unit} onChange={v=>update('width',v)}/><Field label="Length" value={settings.depth} suffix={settings.unit} onChange={v=>update('depth',v)}/></div>
+        <div className="field-label section-label">Setbacks ({settings.unit})</div>
+        <div className="two-cols">{['front','back','left','right'].map(k=><Field key={k} label={k[0].toUpperCase()+k.slice(1)} value={settings.setbacks[k]} onChange={v=>updateSetback(k,v)}/>)}</div>
+        <div className="area-summary"><div><span>Plot area</span><b>{metrics.area} <small>{settings.unit}²</small></b></div><div><span>Buildable estimate</span><b>{metrics.buildable} <small>{settings.unit}²</small></b></div></div>
+        <div className="section-heading"><span className="section-number">02</span><div><b>Building type</b><small>Choose a concept style</small></div></div>
+        <div className="radio-row"><label><input type="radio" checked={settings.buildingType==='single'} onChange={()=>update('buildingType','single')}/> Single floor</label><label><input type="radio" checked={settings.buildingType==='multi'} onChange={()=>update('buildingType','multi')}/> Multi floor</label></div>
+        <div className="section-heading"><span className="section-number">03</span><div><b>Rooms & spaces</b><small>Define your requirements</small></div></div>
+        <div className="room-fields">
+          <RoomCount icon={<Sofa size={16}/>} label="Living room" value={settings.living} onChange={v=>update('living',v)}/>
+          <RoomCount icon={<BedDouble size={16}/>} label="Bedrooms" value={settings.bedrooms} onChange={v=>update('bedrooms',v)} max={6}/>
+          <RoomCount icon={<Bath size={16}/>} label="Bathrooms" value={settings.bathrooms} onChange={v=>update('bathrooms',v)} max={4}/>
+          <RoomCount icon={<ChefHat size={16}/>} label="Kitchen" value={settings.kitchen} onChange={v=>update('kitchen',v)}/>
+          <RoomCount icon={<Utensils size={16}/>} label="Dining" value={settings.dining} onChange={v=>update('dining',v)}/>
+          <RoomCount icon={<CarFront size={16}/>} label="Parking spaces" value={settings.parking} onChange={v=>update('parking',v)} max={4}/>
+        </div>
+        <button className="generate-button" onClick={()=>{setLayoutIndex((layoutIndex+1)%3);setMessage('Generated another schematic option.');}}><Sparkles size={17}/> Generate floor plan <span>↗</span></button>
+        <p className="disclaimer"><CircleHelp size={13}/> Student concept only. Not a construction drawing.</p>
+      </aside>
+      <section className="design-area">
+        <div className="design-toolbar">
+          <div className="toolbar-label"><div className="toolbar-icon"><LayoutGrid size={18}/></div><div><h1>Plan editor</h1><p>Explore your concept and compare options.</p></div></div>
+          <div className="tool-group">{[['select',<MousePointer2 size={15}/>,'Select'],['move',<Move size={15}/>,'Move'],['draw',<Pencil size={15}/>,'Draw']].map(([id,icon,label])=><button key={id} className={tool===id?'tool-active':''} onClick={()=>setTool(id)}>{icon}<span>{label}</span></button>)}</div>
+          <div className="view-group"><button className={view==='2d'?'view-active':''} onClick={()=>setView('2d')}>2D</button><button className={view==='3d'?'view-active':''} onClick={()=>setView('3d')}>3D</button></div>
+          <div className="zoom-tools"><button onClick={()=>setZoom(z=>Math.max(.65,z-.1))}><ZoomOut size={15}/></button><span>{Math.round(zoom*100)}%</span><button onClick={()=>setZoom(z=>Math.min(1.5,z+.1))}><ZoomIn size={15}/></button><button onClick={()=>setZoom(1)}><Maximize size={15}/></button></div>
+        </div>
+        <div className="canvas">
+          {view==='2d' ? <FloorPlan layout={active} settings={settings} zoom={zoom} selectedRoom={selectedRoom} onSelect={setSelectedRoom}/> : <ThreePreview layout={active}/>}
+          <div className="canvas-notice"><span className="green-dot"/>{message}</div><div className="unit-chip">Units: {settings.unit} <span>•</span> Concept scale</div>
+        </div>
+        <div className="options-panel"><div className="options-heading"><div><span className="eyebrow">LAYOUT EXPLORER</span><h3>Compare options <span>{layouts.length}</span></h3></div><span className="muted">Choose a concept to preview</span></div><div className="option-list">{layouts.map((l,i)=><button key={l.id} className={`option-card ${layoutIndex===i?'option-selected':''}`} onClick={()=>{setLayoutIndex(i);setSelectedRoom(null);}}><div className="option-preview"><MiniPlan layout={l}/><span>{String.fromCharCode(65+i)}</span></div><div className="option-copy"><b>{l.name}</b><small>{l.rooms.length} spaces · {settings.width} × {settings.depth} {settings.unit}</small></div><div className="option-mark">{layoutIndex===i?<Check size={16}/>:<span>{i+1}</span>}</div></button>)}</div></div>
+      </section>
+      <aside className="assistant-panel">
+        <div className="panel-heading"><div><span className="eyebrow">QUICK TOOLS</span><h2><Sparkles size={17}/> Design assistant</h2></div><span className="beta">BASIC</span></div>
+        <div className="assistant-card"><div className="assistant-avatar"><Sparkles size={18}/></div><div><b>What would you like to change?</b><p>Describe your site and room requirements. This interface currently previews schematic layouts.</p></div></div>
+        <div className="field-label assistant-label">SUGGESTED COMMANDS</div>
+        {['Make it a 4 bedroom plan','12 m x 18 m plot, 2 bedrooms','Add dining'].map(s=><button className="suggestion" key={s} onClick={()=>setAssistantText(s)}>{s}<span>↗</span></button>)}
+        <div className="assistant-input"><textarea value={assistantText} onChange={e=>setAssistantText(e.target.value)} placeholder="e.g. Make it a 4 bedroom plan…"/><button onClick={applyAssistant} disabled={!assistantText.trim()}><Sparkles size={14}/> Apply change</button></div>
+        <div className="tip-card"><Sparkles size={17}/><p><b>Student tip</b><br/>Try changing the plot size and room count, then compare how each option changes.</p></div>
+        <div className="quick-actions"><div className="quick-heading"><b>Quick actions</b></div><button onClick={saveProject}><Save size={16}/>Save project</button><button onClick={exportSVG}><FileImage size={16}/>Export SVG plan</button><button onClick={exportJSON}><FileJson size={16}/>Export project JSON</button></div>
+        <div className="validation-note"><CircleHelp size={15}/><span>Generated rooms are schematic rectangles. This demo does not verify building codes or construction feasibility.</span></div>
+      </aside>
+    </main>}
+    <footer><span>⌂ Planify</span><span>Residential floor-planning prototype</span><span>React · SVG · LocalStorage</span></footer>
+  </div>;
+}
+
+function Field({label,value,onChange,suffix}){return <label className="field"><span>{label}</span><div><input type="number" min="0" value={value} onChange={e=>onChange(Number(e.target.value))}/>{suffix&&<small>{suffix}</small>}</div></label>}
+function RoomCount({icon,label,value,onChange,max=1}){return <div className="room-count"><span className="room-icon">{icon}</span><span className="room-label">{label}</span><select value={value} onChange={e=>onChange(Number(e.target.value))}>{Array.from({length:max+1},(_,i)=><option key={i} value={i}>{i}</option>)}</select></div>}
+
+function FloorPlan({layout,settings,zoom,selectedRoom,onSelect}){
+  const [drag,setDrag]=useState(null);
+  const W=700,H=720,pad=70;
+  const scale=Math.min((W-pad*2)/settings.width,(H-pad*2)/settings.depth)*zoom;
+  const ox=(W-settings.width*scale)/2,oy=(H-settings.depth*scale)/2;
+  const X=x=>ox+x*scale,Y=y=>oy+(settings.depth-y)*scale;
+  return <div className="floor-canvas"><svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Schematic floor plan">
+    <defs><pattern id="smallGrid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M 18 0 L 0 0 0 18" fill="none" stroke="#e8edf4" strokeWidth=".8"/></pattern></defs>
+    <rect width={W} height={H} fill="url(#smallGrid)"/>
+    <text x={ox} y={Math.max(18,oy-24)} fontSize="12" fill="#68758a" fontWeight="700" letterSpacing="1">SITE BOUNDARY · {settings.width} × {settings.depth} {settings.unit}</text>
+    <rect x={ox} y={oy} width={settings.width*scale} height={settings.depth*scale} fill="#f0f4e9" stroke="#66765b" strokeWidth="2"/>
+    <rect x={X(layout.buildable.x)} y={Y(layout.buildable.y+layout.buildable.depth)} width={layout.buildable.width*scale} height={layout.buildable.depth*scale} fill="#f8faf4" stroke="#a4b39b" strokeDasharray="6 4" strokeWidth="1.5"/>
+    {Array.from({length:4},(_,i)=><g key={i}><circle cx={ox+15+(i%2)*settings.width*scale*.93} cy={oy+22+Math.floor(i/2)*settings.depth*scale*.91} r={9} fill="#9ebd83"/><circle cx={ox+15+(i%2)*settings.width*scale*.93} cy={oy+22+Math.floor(i/2)*settings.depth*scale*.91} r={4} fill="#6e9958"/></g>)}
+    {layout.rooms.map((r,i)=><g key={r.id} onClick={()=>onSelect(r.id)} style={{cursor:'pointer'}}><rect x={X(r.x)} y={Y(r.y+r.depth)} width={r.width*scale} height={r.depth*scale} fill={r.color} stroke={selectedRoom===r.id?'#3269e8':'#384253'} strokeWidth={selectedRoom===r.id?3:2.2}/><text x={X(r.x+r.width/2)} y={Y(r.y+r.depth/2)-5} textAnchor="middle" fontSize={Math.max(9,Math.min(13,scale*.36))} fontWeight="700" fill="#283448">{r.name}</text><text x={X(r.x+r.width/2)} y={Y(r.y+r.depth/2)+10} textAnchor="middle" fontSize={Math.max(8,Math.min(10,scale*.27))} fill="#667287">{r.width.toFixed(1)} × {r.depth.toFixed(1)}</text></g>)}
+    <line x1={ox} y1={oy-8} x2={ox+settings.width*scale} y2={oy-8} stroke="#78859a"/><text x={ox+settings.width*scale/2} y={oy-14} textAnchor="middle" fontSize="11" fill="#64748b">{settings.width} {settings.unit}</text>
+    <text x={ox-20} y={oy+settings.depth*scale/2} transform={`rotate(-90 ${ox-20} ${oy+settings.depth*scale/2})`} textAnchor="middle" fontSize="11" fill="#64748b">{settings.depth} {settings.unit}</text>
+    <text x={ox+5} y={oy+settings.depth*scale+22} fontSize="10" fill="#7d8a70">FRONT / ACCESS</text>
+  </svg></div>;
+}
+function MiniPlan({layout}){const w=90,h=62,s=Math.min((w-8)/layout.width,(h-8)/layout.depth);return <svg viewBox={`0 0 ${w} ${h}`}><rect x="4" y="4" width={layout.width*s} height={layout.depth*s} fill="#f0f4e9" stroke="#b4bfad"/>{layout.rooms.map(r=><rect key={r.id} x={4+r.x*s} y={4+(layout.depth-r.y-r.depth)*s} width={Math.max(1,r.width*s)} height={Math.max(1,r.depth*s)} fill={r.color} stroke="#64748b" strokeWidth=".6"/>)}</svg>}
+function ThreePreview({layout}){return <div className="simple-3d"><div className="three-caption"><span className="blue-dot"/> Simplified 3D-style preview</div><div className="isometric" style={{transform:'rotateX(53deg) rotateZ(-35deg) scale(.78)'}}><div className="iso-ground"/>{layout.rooms.map((r,i)=><div key={r.id} className="iso-room" style={{left:`${r.x/layout.width*100}%`,top:`${(layout.depth-r.y-r.depth)/layout.depth*100}%`,width:`${r.width/layout.width*100}%`,height:`${r.depth/layout.depth*100}%`,background:r.color,transform:`translateZ(${i%2?18:10}px)`}}><span>{r.name}</span></div>)}</div><p>Illustrative preview only. Use the 2D plan for dimensions.</p></div>}
+function HomePage({onNew,onSaved,savedCount}){return <main className="home-page"><div className="hero"><div className="hero-copy"><span className="eyebrow">A SIMPLE ARCHITECTURE PLANNING TOOL</span><h1>Turn your plot into a <em>floor plan.</em></h1><p>Explore simple room layouts, test plot dimensions, and save your concepts in one student-friendly workspace.</p><div className="hero-buttons"><button className="primary" onClick={onNew}><Plus size={17}/> Create a new plan</button><button className="secondary" onClick={onSaved}><FolderOpen size={16}/> Saved projects ({savedCount})</button></div><div className="hero-points"><span><Check size={14}/> Free local prototype</span><span><Check size={14}/> No login needed</span><span><Check size={14}/> SVG export</span></div></div><div className="hero-visual"><div className="hero-floating top"><span className="blue-dot"/> Concept generated <b>✓</b></div><div className="hero-plan"><MiniPlan layout={createLayout(DEFAULT,0)}/><div className="hero-room-label"><b>My Home Plan</b><span>3 bedrooms · 2 bathrooms</span></div></div><div className="hero-floating bottom"><LayoutGrid size={15}/> 3 layout options</div></div></div><div className="feature-grid"><div><span><Pencil size={18}/></span><b>Simple controls</b><p>Adjust site dimensions, setbacks, rooms and parking.</p></div><div><span><LayoutGrid size={18}/></span><b>Compare concepts</b><p>Switch between three schematic room arrangement options.</p></div><div><span><Download size={18}/></span><b>Export your work</b><p>Download a vector SVG plan or JSON project data.</p></div></div></main>}
+function SavedPage({projects,onOpen,onDelete,onNew}){return <main className="saved-page"><div className="saved-title"><div><span className="eyebrow">YOUR WORKSPACE</span><h1>Saved projects</h1><p>Projects are stored in this browser using LocalStorage.</p></div><button className="primary" onClick={onNew}><Plus size={16}/> New project</button></div>{projects.length===0?<div className="empty-state"><FolderOpen size={32}/><h3>No saved projects yet</h3><p>Create a floor plan and use Save project to keep it here.</p><button className="primary" onClick={onNew}>Create your first plan</button></div>:<div className="saved-grid">{projects.map(p=><article className="saved-card" key={p.id}><div className="saved-thumb"><MiniPlan layout={createLayout(p,0)}/></div><div className="saved-card-copy"><b>{p.name}</b><span>{p.width} × {p.depth} {p.unit} · {p.bedrooms} bedrooms</span><small>Updated {new Date(p.updatedAt).toLocaleDateString()}</small></div><button className="secondary open-btn" onClick={()=>onOpen(p)}>Open</button><button className="icon-button" title="Delete project" onClick={()=>onDelete(p.id)}><Trash2 size={15}/></button></article>)}</div>}</main>}
+createRoot(document.getElementById('root')).render(<App/>);
