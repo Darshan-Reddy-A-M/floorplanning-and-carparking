@@ -1,0 +1,147 @@
+{
+  "input_file": "data\\training\\cubicasa5k_train_v2_sample.jsonl",
+  "validation_report": "data\\training\\cubicasa5k_train_v2_validation.json",
+  "output_file": "data\\training\\cubicasa5k_candidates_100.jsonl",
+  "input_plans_loaded": 100,
+  "invalid_input_lines": [],
+  "candidate_plans": 91,
+  "excluded_plans": 9,
+  "candidate_spaces": 1371,
+  "excluded_plan_details": [
+    {
+      "plan_id": "6165",
+      "reason": [
+        "small_polygon_review"
+      ],
+      "finding_count": 1
+    },
+    {
+      "plan_id": "449",
+      "reason": [
+        "small_polygon_review"
+      ],
+      "finding_count": 1
+    },
+    {
+      "plan_id": "8096",
+      "reason": [
+        "small_polygon_review"
+      ],
+      "finding_count": 1
+    },
+    {
+      "plan_id": "763",
+      "reason": [
+        "small_polygon_review"
+      ],
+      "finding_count": 1
+    },
+    {
+      "plan_id": "3941",
+      "reason": [
+        "outside_svg_bounds"
+      ],
+      "finding_count": 1
+    },
+    {
+      "plan_id": "1860",
+      "reason": [
+        "outside_svg_bounds",
+        "small_polygon_review"
+      ],
+      "finding_count": 2
+    },
+    {
+      "plan_id": "559",
+      "reason": [
+        "outside_svg_bounds"
+      ],
+      "finding_count": 1
+    },
+    {
+      "plan_id": "9099",
+      "reason": [
+        "small_polygon_review"
+      ],
+      "finding_count": 2
+    },
+    {
+      "plan_id": "1694",
+      "reason": [
+        "outside_svg_bounds"
+      ],
+      "finding_count": 1
+    }
+  ],
+  "original_label_counts": {
+    "Outdoor": 216,
+    "Entry": 97,
+    "Kitchen": 96,
+    "LivingRoom": 78,
+    "Utility": 32,
+    "Bath": 165,
+    "Bedroom": 205,
+    "Undefined": 220,
+    "DraughtLobby": 55,
+    "Room": 54,
+    "TechnicalRoom": 21,
+    "DressingRoom": 12,
+    "UserDefined": 62,
+    "Elevated": 4,
+    "Storage": 60,
+    "Dining": 18,
+    "Closet": 57,
+    "Office": 8,
+    "Attic": 3,
+    "Garage": 13,
+    "Den": 9,
+    "Basement": 2,
+    "Hall": 6,
+    "CarPort": 11,
+    "RecreationRoom": 2,
+    "Library": 1,
+    "OpenToBelow": 1
+  },
+  "candidate_label_counts": {
+    "Outdoor": 196,
+    "Entry": 88,
+    "Kitchen": 87,
+    "LivingRoom": 74,
+    "Utility": 30,
+    "Bath": 149,
+    "Bedroom": 187,
+    "Undefined": 194,
+    "DraughtLobby": 51,
+    "TechnicalRoom": 20,
+    "DressingRoom": 11,
+    "UserDefined": 51,
+    "Elevated": 3,
+    "Storage": 54,
+    "Dining": 18,
+    "Closet": 55,
+    "Office": 8,
+    "Room": 48,
+    "Attic": 3,
+    "Garage": 13,
+    "Den": 8,
+    "Basement": 2,
+    "Hall": 6,
+    "CarPort": 11,
+    "RecreationRoom": 2,
+    "Library": 1,
+    "OpenToBelow": 1
+  },
+  "small_area_threshold_svg_units2": 100.0,
+  "physical_scale_known": false,
+  "training_ready": false,
+  "limitations": [
+    "This is a screening filter, not complete architectural validation.",
+    "Plans with small polygons are excluded as complete plans.",
+    "The small-area threshold is not a physical room-size rule.",
+    "The original source dataset is not modified.",
+    "Room labels and polygon geometry may still contain semantic issues.",
+    "SVG transformations and topology require separate validation.",
+    "Site dimensions, setbacks, and user requirements are not supplied by this dataset.",
+    "Candidate plans must be reviewed before model training."
+  ]
+}

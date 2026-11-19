@@ -1,0 +1,101 @@
+{
+  "input_file": "data\\training\\cubicasa5k_train_v2_sample.jsonl",
+  "input_nonempty_lines": 100,
+  "invalid_json_lines": 0,
+  "plans_processed": 100,
+  "plans_with_valid_dimensions": 100,
+  "plans_with_invalid_dimensions": 0,
+  "spaces_processed": 1508,
+  "spaces_missing_points": 0,
+  "spaces_invalid_coordinates": 0,
+  "spaces_too_few_points": 0,
+  "spaces_few_unique_points": 0,
+  "spaces_outside_bounds": 4,
+  "spaces_non_positive_area": 0,
+  "spaces_small_polygon_review": 7,
+  "spaces_nested_viewport": 0,
+  "spaces_with_extractor_flags": 0,
+  "spaces_transform_errors": 0,
+  "invalid_space_records": 0,
+  "issue_counts": {
+    "small_polygon_review": 7,
+    "outside_svg_bounds": 4
+  },
+  "findings_count": 11,
+  "findings": [
+    {
+      "plan_id": "6165",
+      "room_label": "Undefined",
+      "issue": "small_polygon_review",
+      "details": "Space index 2 has area 26.867700 SVG units squared; review required."
+    },
+    {
+      "plan_id": "449",
+      "room_label": "Undefined",
+      "issue": "small_polygon_review",
+      "details": "Space index 2 has area 47.562600 SVG units squared; review required."
+    },
+    {
+      "plan_id": "8096",
+      "room_label": "Undefined",
+      "issue": "small_polygon_review",
+      "details": "Space index 5 has area 57.451900 SVG units squared; review required."
+    },
+    {
+      "plan_id": "763",
+      "room_label": "Undefined",
+      "issue": "small_polygon_review",
+      "details": "Space index 4 has area 4.680000 SVG units squared; review required."
+    },
+    {
+      "plan_id": "3941",
+      "room_label": "Outdoor",
+      "issue": "outside_svg_bounds",
+      "details": "Space index 7; SVG dimensions=2172.4800300598145x893.2899513244629; outside points=[(1253.65, -24.91), (1066.09, -24.91), (1066.09, -36.91), (900.05, -36.91)]"
+    },
+    {
+      "plan_id": "1860",
+      "room_label": "Undefined",
+      "issue": "small_polygon_review",
+      "details": "Space index 2 has area 17.050000 SVG units squared; review required."
+    },
+    {
+      "plan_id": "1860",
+      "room_label": "Outdoor",
+      "issue": "outside_svg_bounds",
+      "details": "Space index 19; SVG dimensions=2091.310157775879x1303.3000106811523; outside points=[(-97.1, 1302.87), (-97.1, 925.42)]"
+    },
+    {
+      "plan_id": "559",
+      "room_label": "Undefined",
+      "issue": "outside_svg_bounds",
+      "details": "Space index 19; SVG dimensions=2869.970703125x1322.7900085449219; outside points=[(-1.25, 919.58), (-1.25, 693.64)]"
+    },
+    {
+      "plan_id": "9099",
+      "room_label": "Undefined",
+      "issue": "small_polygon_review",
+      "details": "Space index 2 has area 2.008050 SVG units squared; review required."
+    },
+    {
+      "plan_id": "9099",
+      "room_label": "Undefined",
+      "issue": "small_polygon_review",
+      "details": "Space index 3 has area 21.489250 SVG units squared; review required."
+    },
+    {
+      "plan_id": "1694",
+      "room_label": "Outdoor",
+      "issue": "outside_svg_bounds",
+      "details": "Space index 0; SVG dimensions=1012.570484161377x1387.7400436401367; outside points=[(57.26, -13.93), (631.39, -13.93)]"
+    }
+  ],
+  "notes": [
+    "This is a geometry screening report, not architectural validation.",
+    "Original dataset files are never modified.",
+    "Out-of-bounds polygons are flagged, not automatically clipped.",
+    "SVG coordinate units are not assumed to be metres or feet.",
+    "This script does not validate room adjacency or topology.",
+    "Transformation handling requires separate verification."
+  ]
+}

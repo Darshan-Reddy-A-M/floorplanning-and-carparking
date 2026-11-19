@@ -1,0 +1,824 @@
+{
+  "split": "train",
+  "entries_requested": 100,
+  "plans_extracted": 100,
+  "missing_svgs": 0,
+  "parse_errors": 0,
+  "transform_parse_errors": 0,
+  "space_polygons_extracted": 1508,
+  "small_polygons_for_review": 0,
+  "spaces_with_nested_svg_viewport_ancestors": 0,
+  "top_labels": [
+    [
+      "Undefined",
+      220
+    ],
+    [
+      "Outdoor",
+      216
+    ],
+    [
+      "Bedroom",
+      205
+    ],
+    [
+      "Bath",
+      165
+    ],
+    [
+      "Entry",
+      97
+    ],
+    [
+      "Kitchen",
+      96
+    ],
+    [
+      "LivingRoom",
+      78
+    ],
+    [
+      "UserDefined",
+      62
+    ],
+    [
+      "Storage",
+      60
+    ],
+    [
+      "Closet",
+      57
+    ],
+    [
+      "DraughtLobby",
+      55
+    ],
+    [
+      "Room",
+      54
+    ],
+    [
+      "Utility",
+      32
+    ],
+    [
+      "TechnicalRoom",
+      21
+    ],
+    [
+      "Dining",
+      18
+    ],
+    [
+      "Garage",
+      13
+    ],
+    [
+      "DressingRoom",
+      12
+    ],
+    [
+      "CarPort",
+      11
+    ],
+    [
+      "Den",
+      9
+    ],
+    [
+      "Office",
+      8
+    ],
+    [
+      "Hall",
+      6
+    ],
+    [
+      "Elevated",
+      4
+    ],
+    [
+      "Attic",
+      3
+    ],
+    [
+      "Basement",
+      2
+    ],
+    [
+      "RecreationRoom",
+      2
+    ],
+    [
+      "Library",
+      1
+    ],
+    [
+      "OpenToBelow",
+      1
+    ]
+  ],
+  "plans": [
+    {
+      "plan_id": "6044",
+      "space_count": 10,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "2564",
+      "space_count": 24,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "6165",
+      "space_count": 6,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1021",
+      "space_count": 17,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "5507",
+      "space_count": 16,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1269",
+      "space_count": 30,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "5988",
+      "space_count": 10,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "2123",
+      "space_count": 9,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "6293",
+      "space_count": 17,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "925",
+      "space_count": 5,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1171",
+      "space_count": 18,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9333",
+      "space_count": 7,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8815",
+      "space_count": 21,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1784",
+      "space_count": 22,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "6335",
+      "space_count": 10,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "4947",
+      "space_count": 19,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "4501",
+      "space_count": 8,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "3796",
+      "space_count": 12,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "4554",
+      "space_count": 14,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "4880",
+      "space_count": 26,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "594",
+      "space_count": 22,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9618",
+      "space_count": 11,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "652",
+      "space_count": 20,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8406",
+      "space_count": 12,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "693",
+      "space_count": 7,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "449",
+      "space_count": 13,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8714",
+      "space_count": 15,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "5658",
+      "space_count": 6,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "2015",
+      "space_count": 7,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8650",
+      "space_count": 16,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1455",
+      "space_count": 9,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "5628",
+      "space_count": 11,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "7595",
+      "space_count": 9,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "816",
+      "space_count": 10,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "7072",
+      "space_count": 17,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8096",
+      "space_count": 11,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9946",
+      "space_count": 19,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "7885",
+      "space_count": 17,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8121",
+      "space_count": 8,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8422",
+      "space_count": 25,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "935",
+      "space_count": 10,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "2108",
+      "space_count": 23,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "7748",
+      "space_count": 9,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "6100",
+      "space_count": 26,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8685",
+      "space_count": 17,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "4808",
+      "space_count": 17,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8184",
+      "space_count": 6,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8368",
+      "space_count": 18,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1834",
+      "space_count": 10,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "6588",
+      "space_count": 14,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "451",
+      "space_count": 17,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "2142",
+      "space_count": 6,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "4509",
+      "space_count": 8,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8212",
+      "space_count": 12,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1199",
+      "space_count": 18,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "959",
+      "space_count": 5,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "102",
+      "space_count": 27,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "784",
+      "space_count": 17,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "763",
+      "space_count": 15,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "3937",
+      "space_count": 7,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9229",
+      "space_count": 15,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "3941",
+      "space_count": 10,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "898",
+      "space_count": 19,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "3718",
+      "space_count": 18,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9705",
+      "space_count": 7,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "5785",
+      "space_count": 10,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1860",
+      "space_count": 22,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "6626",
+      "space_count": 5,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9285",
+      "space_count": 25,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8091",
+      "space_count": 5,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "5083",
+      "space_count": 16,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8246",
+      "space_count": 6,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "6122",
+      "space_count": 33,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8155",
+      "space_count": 21,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "3202",
+      "space_count": 29,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8734",
+      "space_count": 15,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "6445",
+      "space_count": 11,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9722",
+      "space_count": 32,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9275",
+      "space_count": 15,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1160",
+      "space_count": 16,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9678",
+      "space_count": 7,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "336",
+      "space_count": 13,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "8577",
+      "space_count": 24,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "559",
+      "space_count": 23,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "3778",
+      "space_count": 6,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "5788",
+      "space_count": 11,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "3971",
+      "space_count": 25,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9327",
+      "space_count": 15,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "5677",
+      "space_count": 14,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9099",
+      "space_count": 26,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1321",
+      "space_count": 22,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "7668",
+      "space_count": 6,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1694",
+      "space_count": 11,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9626",
+      "space_count": 18,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "4831",
+      "space_count": 11,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "2000",
+      "space_count": 15,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "5722",
+      "space_count": 39,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "1581",
+      "space_count": 9,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "9620",
+      "space_count": 18,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    },
+    {
+      "plan_id": "4695",
+      "space_count": 17,
+      "small_polygons_for_review": 0,
+      "spaces_with_nested_svg_viewport_ancestors": 0,
+      "transform_parse_errors": []
+    }
+  ],
+  "important_note": "Coordinates are in SVG user units, not real-world feet/meters. Nested SVG viewport mappings are flagged for review and are not applied by this script. Validate geometry visually before training."
+}

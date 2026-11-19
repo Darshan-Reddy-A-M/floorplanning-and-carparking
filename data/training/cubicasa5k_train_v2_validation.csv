@@ -1,0 +1,12 @@
+﻿plan_id,room_label,issue,details
+6165,Undefined,small_polygon_review,Space index 2 has area 26.867700 SVG units squared; review required.
+449,Undefined,small_polygon_review,Space index 2 has area 47.562600 SVG units squared; review required.
+8096,Undefined,small_polygon_review,Space index 5 has area 57.451900 SVG units squared; review required.
+763,Undefined,small_polygon_review,Space index 4 has area 4.680000 SVG units squared; review required.
+3941,Outdoor,outside_svg_bounds,"Space index 7; SVG dimensions=2172.4800300598145x893.2899513244629; outside points=[(1253.65, -24.91), (1066.09, -24.91), (1066.09, -36.91), (900.05, -36.91)]"
+1860,Undefined,small_polygon_review,Space index 2 has area 17.050000 SVG units squared; review required.
+1860,Outdoor,outside_svg_bounds,"Space index 19; SVG dimensions=2091.310157775879x1303.3000106811523; outside points=[(-97.1, 1302.87), (-97.1, 925.42)]"
+559,Undefined,outside_svg_bounds,"Space index 19; SVG dimensions=2869.970703125x1322.7900085449219; outside points=[(-1.25, 919.58), (-1.25, 693.64)]"
+9099,Undefined,small_polygon_review,Space index 2 has area 2.008050 SVG units squared; review required.
+9099,Undefined,small_polygon_review,Space index 3 has area 21.489250 SVG units squared; review required.
+1694,Outdoor,outside_svg_bounds,"Space index 0; SVG dimensions=1012.570484161377x1387.7400436401367; outside points=[(57.26, -13.93), (631.39, -13.93)]"
