@@ -1,0 +1,31 @@
+__pycache__/
+*.py[oc]
+.pytest_cache/
+.venv/
+.pythonlibs/
+build/
+dist/
+*.egg-info/
+.streamlit/secrets.toml
+# Raw datasets are kept outside the project; only compact derived priors are versioned.
+data/raw/
+datasets/
+rplan/
+RPLAN/
+cubicasa*/
+CubiCasa*/
+high_quality/
+high_quality_architectural/
+colorful/
+# Local generated plan batches and training outputs.
+generated_plans_120/
+outputs/
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.h5
+*.hdf5
+*.lmdb
