@@ -1,0 +1,13 @@
+{
+  "_instructions": "Copy to rplan_legend.json and fill in ONLY meanings taken from RPLAN's own documentation or paper. 'source' is mandatory (the tool refuses a legend without it). Use the channel INDEX as printed by inspect_rplan.py (0-based, in the image's channel order) and the pixel value. Leave 'scale' null unless the documentation states a pixel-to-meter scale.",
+  "source": "",
+  "labels": {
+    "<channel index>": {
+      "<pixel value>": "<name from the documentation>"
+    }
+  },
+  "scale": {
+    "pixels_per_meter": null,
+    "source": ""
+  }
+}
