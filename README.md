@@ -47,3 +47,17 @@ python -m unittest discover -s tests -v
 ```
 
 For offline dataset inspection, install `requirements-dataset.txt`. For the optional PyTorch sample-training pipeline, install `requirements-training.txt`. The default planner only requires `requirements.txt`.
+
+## 📸 Project Screenshots
+
+### 🏠 Home Page
+![Home Page](outputs/home%20page.png)
+
+### 🏢 Ground Floor Plan
+![Ground Floor](outputs/ground%20floor.png)
+
+### 🏢 First Floor Plan
+![First Floor](outputs/first%20floor.png)
+
+### 🧊 3D Model Visualization
+![3D Model](outputs/3d%20model.png)
